@@ -1,1 +1,2 @@
-Scripts for aligning sequences to reference genome B10.
+Scripts for aligning sequences to reference genome Drosphila Melanogaster
+
