@@ -2,7 +2,7 @@
 #script to align sequences to Drosphila Melanogaster genome with Bowtie2.
 SAMPLE1=(SRR6008648_1 SRR6008629_1)
 SAMPLE2=(SRR6008648_2 SRR6008629_2)
-
+SAMPLE_OUTNAME=(SRR6008648 SRR6008629)
 mkdir bowtie2_output
 mkdir drosophila_bowtie_index
 
@@ -19,7 +19,7 @@ done
 
 
 for i in "${!SAMPLE1[@]}"; do
-     docker run --platform linux/amd64 -it --rm -v $(pwd):/data alexeyebi/bowtie2_samtools bowtie2 -p 3 -t -x /data/drosophila_bowtie_index/bowtie_index -1 /data/bfc_corrected_trimmomatic_"${SAMPLE1[i]}".fastq -2 /data/bfc_corrected_trimmomatic_"${SAMPLE2[i]}".fastq -S /data/bowtie2_output/"${SAMPLE1[i]}".sam
+     docker run --platform linux/amd64 -it --rm -v $(pwd):/data alexeyebi/bowtie2_samtools bowtie2 -p 3 -t -x /data/drosophila_bowtie_index/bowtie_index -1 /data/bfc_corrected_trimmomatic_"${SAMPLE1[i]}".fastq -2 /data/bfc_corrected_trimmomatic_"${SAMPLE2[i]}".fastq -S /data/bowtie2_output/"${SAMPLE_OUTNAME[i]}".sam
 done
 
 for i in "${!SAMPLE1[@]}"; do
